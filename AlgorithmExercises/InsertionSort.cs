@@ -10,22 +10,12 @@ namespace AlgorithmExercises
 
             for (int i = 1; i < array.Length; i++)
             {
-                var isSorted = false;
-                var index = 1;
-                var previousIndex = i - 1;
+                var index = i;
 
-                while (previousIndex >= 0 || !isSorted)
+                while (index > 0 && array[index - 1] > array[index])
                 {
-                    if (array[previousIndex] > array[index])
-                    {
-                        Swap(array, index, previousIndex);
-                        index--;
-                        previousIndex--;
-                    }
-                    else
-                    {
-                        isSorted = true;
-                    }
+                    Swap(array, index, index - 1);
+                    index--;
                 }
             }
 
