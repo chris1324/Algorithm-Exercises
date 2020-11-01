@@ -2,25 +2,33 @@
 
 namespace AlgorithmExercises
 {
-    class MaxSubsetSumNoAdjacent
+    class NumberOfWaysToMakeChange
     {
-        static int Solve(int[] array)
+        public static void QuickTest()
         {
-            // O(n) time | O(i) space
-            if (array.Length == 0) return 0;
-            else if (array.Length == 1) return array[0];
+            var n = 2;
+            var denoms = new int[] { 1, 5 };
 
-            var first = array[0];
-            var second = Math.Max(array[0], array[1]);
+            Console.WriteLine(Solve(n, denoms));
+        }
 
-            for (var i = 2; i < array.Length; i++)
+        static int Solve(int n, int[] denoms)
+        {
+            // O(nd) time | O(n) space
+            var ways = new int[n + 1];
+            ways[0] = 1;
+
+            foreach (var denom in denoms)
             {
-                var maxSum = Math.Max(second, first + array[i]);
-                first = second;
-                second = maxSum;
+                for (int i = 1; i <= n; i++)
+                {
+                    if (i < denom) continue;
+
+                    ways[i] += ways[i - denom];
+                }
             }
 
-            return second;
+            return ways[n];
         }
     }
 }
