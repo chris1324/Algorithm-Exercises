@@ -18,9 +18,10 @@ namespace AlgorithmExercises
         {
             // O(n) time | O(1) space
             var orderList = order.ToList();
+
+            var index = 0;
+            var nextFirstNumIndex = index;
             var nextThridNumIndex = array.Length - 1;
-            var nextFirstNumIndex = 0;
-            var index = nextFirstNumIndex;
 
             while (index <= nextThridNumIndex)
             {
@@ -31,6 +32,7 @@ namespace AlgorithmExercises
 
                 if (isFirst)
                 {
+                    // The num is correctly placed
                     if (nextFirstNumIndex == index)
                     {
                         index++;
