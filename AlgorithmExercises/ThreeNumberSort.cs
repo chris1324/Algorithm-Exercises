@@ -19,38 +19,30 @@ namespace AlgorithmExercises
             // O(n) time | O(1) space
             var orderList = order.ToList();
 
-            var index = 0;
-            var nextFirstNumIndex = index;
+            var nextFirstNumIndex = 0;
+            var nextSecondNumIndex = 0;
             var nextThridNumIndex = array.Length - 1;
 
-            while (index <= nextThridNumIndex)
+            while (nextSecondNumIndex <= nextThridNumIndex)
             {
-                var num = array[index];
+                var num = array[nextSecondNumIndex];
 
                 var isFirst = orderList.IndexOf(num) == 0;
                 var isSecond = orderList.IndexOf(num) == 1;
 
                 if (isFirst)
                 {
-                    // The num is correctly placed
-                    if (nextFirstNumIndex == index)
-                    {
-                        index++;
-                        nextFirstNumIndex++;
-                    }
-                    else
-                    {
-                        Swap(array, nextFirstNumIndex, index);
-                        nextFirstNumIndex++;
-                    }
+                    Swap(array, nextFirstNumIndex, nextSecondNumIndex);
+                    nextFirstNumIndex++;
+                    nextSecondNumIndex++;
                 }
                 else if (isSecond)
                 {
-                    index++;
+                    nextSecondNumIndex++;
                 }
                 else
                 {
-                    Swap(array, nextThridNumIndex, index);
+                    Swap(array, nextThridNumIndex, nextSecondNumIndex);
                     nextThridNumIndex--;
                 }
             }
