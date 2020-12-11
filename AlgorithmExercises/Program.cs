@@ -6,7 +6,7 @@ namespace AlgorithmExercises
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            LongestPalindromicSubString.QuickTest();
         }
     }
 }
