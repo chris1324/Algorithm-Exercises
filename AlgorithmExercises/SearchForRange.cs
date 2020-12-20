@@ -20,7 +20,7 @@ namespace AlgorithmExercises
             var leftIndex = 0;
             var rightIndex = array.Length - 1; ;
 
-            var targetPosition = SolveB(array, target, leftIndex, rightIndex);
+            var targetPosition = BinarySearchIterative(array, target, leftIndex, rightIndex);
 
             if (targetPosition != -1)
             {
@@ -29,19 +29,19 @@ namespace AlgorithmExercises
 
                 while (rangeStartIndex - 1 >= 0 && array[rangeStartIndex - 1] == target)
                 {
-                    rangeStartIndex = SolveB(array, target, 0, rangeStartIndex - 1);
+                    rangeStartIndex = BinarySearchIterative(array, target, 0, rangeStartIndex - 1);
                 }
 
                 while (rangeEndIndex + 1 < array.Length && array[rangeEndIndex + 1] == target)
                 {
-                    rangeEndIndex = SolveHelper(array, target, rangeEndIndex + 1, array.Length);
+                    rangeEndIndex = BinarySearchRecursive(array, target, rangeEndIndex + 1, array.Length);
                 }
             }
 
             return new int[] { rangeStartIndex, rangeEndIndex };
         }
 
-        public static int SolveHelper(int[] array, int target, int left, int right)
+        public static int BinarySearchRecursive(int[] array, int target, int left, int right)
         {
             // O(n) time | O(Log(n)) space
             // Using recursive approach
@@ -59,15 +59,15 @@ namespace AlgorithmExercises
             }
             else if (target > middleValue)
             {
-                return SolveHelper(array, target, middle + 1, right);
+                return BinarySearchRecursive(array, target, middle + 1, right);
             }
             else
             {
-                return SolveHelper(array, target, left, middle - 1);
+                return BinarySearchRecursive(array, target, left, middle - 1);
             }
         }
 
-        public static int SolveB(int[] array, int target, int left, int right)
+        public static int BinarySearchIterative(int[] array, int target, int left, int right)
         {
             // O(n) time | O(1) space
             // Using iterative approach
