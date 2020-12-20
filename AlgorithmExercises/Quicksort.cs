@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace AlgorithmExercises
 {
-    class Quciksort
+    class Quicksort
     {
         public static void QuickTest()
         {
